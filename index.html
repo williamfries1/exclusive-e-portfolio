@@ -4,9 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
     <script src="https://kit.fontawesome.com/49bf7b0baf.js" crossorigin="anonymous"></script>
     <title>Document</title>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@5/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init({
+           publicKey: "_eCFfbuTXvbibLFQc",
+          });
+      })();
+    </script>
+    <script src="app.js"></script>
   </head>
   <body>
     <section id="landing-page">
@@ -29,15 +40,15 @@
             link__hover-effect--black
             ">Projects</a>
           </li>
-          <li class="nav__link">
+          <li class="nav__link" onclick="toggleModal()">
             <a href="#" class="
             nav__link--anchor 
             link__hover-effect
             link__hover-effect--black
             ">Contact</a>
           </li>    
-          <li class="nav__link click">
-            <a href="" class="
+          <li class="nav__link click" onclick="toggleContrast()">
+            <a href="#" class="
             nav__link--anchor
             link__hover-effect
             link__hover-effect--black
@@ -51,7 +62,7 @@
           <h1 class="title blue">I'm William</h1>
           <p class="header__para">I'm a <b class="blue">Frontend Software Engineer</b> with a strong passion for building web applications with great user experiences.
           <br>
-          Here's a bit more <b class="blue">about me.</b>
+          Here's a bit more <b class="blue click" onclick="toggleModal()">about me.</b>
         </p>
         <div class="social__list">
           <a href="https://www.linkedin.com/in/williamfries"  target="_blank" class="social__link click">
@@ -66,7 +77,7 @@
         </div>
         </div>
       </header>
-      <button class="mail__btn click">
+      <button class="mail__btn click " onclick="toggleModal()">
         <i class="fa-solid fa-envelope"></i>
       </button>
       <a href="#projects" class="scroll">
@@ -100,20 +111,21 @@
           </div>
         </div>
         <div class="modal__half modal__contact">
+          <i class="fa-solid fa-xmark modal__exit click" onclick="toggleModal()"></i>
           <h3 class="modal__title modal__title--contact">Let's have a chat!</h3>
           <h4 class="modal__sub-title modal__sub-title__contact">I'm currently open to new opportunities.</h4>
-          <form action="" id="contact__form">
+          <form id="contact__form" onsubmit="contact(event)">
             <div class="form__item">
               <label class="form__item--label">Name</label>
-              <input class="input" name="user_name" type="text" required></input>
+              <input class="input" name="user_name" type="text" ></input>
             </div>
             <div class="form__item">
               <label class="form__item--label">E-mail</label>
-              <input class="input" name="user_email" type="email" required></input>
+              <input class="input" name="user_email" type="email" ></input>
             </div>
             <div class="form__item">
               <label class="form__item--label">Message</label>
-              <textarea class="input" name="user_message" type="text" required></textarea>
+              <textarea class="input" name="message" type="text" ></textarea>
             </div>
             <button id="contact__submit" class="form__submit">Send it my way</button>
           </form>
@@ -125,7 +137,7 @@
           </div>
           
         </div>
-        <i class="fa-solid fa-xmark modal__exit click"></i>
+        
       </div>
       
     </section>
@@ -237,8 +249,8 @@
             <a href="" class="
               footer__social--link
               link__hover-effect
-              link__hover-effect--white" target="_blank">
-                Contact
+              link__hover-effect--white">
+                Email
             </a>
             <a href="" class="
               footer__social--link
